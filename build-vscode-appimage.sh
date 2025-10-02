@@ -8,11 +8,13 @@ set -euo pipefail
 
 VERBOSE=false
 INSIDER=false
+REMOVE=false
 
 while [ $# -gt 0 ]; do
     case "$1" in
         --verbose) VERBOSE=true ;;
         --insider) INSIDER=true ;;
+            --remove) REMOVE=true ;;
         *) echo "Unknown argument: $1"; exit 1 ;;
     esac
     shift
@@ -21,6 +23,27 @@ done
 echo "========================================"
 echo " Script: VS Code AppImage Builder (improved)"
 echo "========================================"
+
+if [ "$REMOVE" = true ]; then
+    echo "Removing installed AppImage and desktop entry..."
+    APP="vscode"
+    CHANNEL="stable"
+    if [ "$INSIDER" = true ]; then
+        APP="vscode-insiders"
+        CHANNEL="insider"
+    fi
+    ARCH="x86_64"
+    IMAGE_OUT="$PWD/${APP}-${ARCH}-${CHANNEL}.AppImage"
+    INSTALL_DIR="$HOME/.local/share/applications"
+    ICON_INSTALL_DIR="$HOME/.local/share/icons/hicolor/256x256/apps"
+    INSTALLED_DESKTOP="$INSTALL_DIR/${APP}.desktop"
+    ICON_PATH="$ICON_INSTALL_DIR/${APP}.png"
+    rm -f "$IMAGE_OUT" "$INSTALLED_DESKTOP" "$ICON_PATH"
+    echo "Removed: $IMAGE_OUT"
+    echo "Removed: $INSTALLED_DESKTOP"
+    echo "Removed: $ICON_PATH"
+    exit 0
+fi
 
 APP="vscode"
 ROOT="$(pwd)"

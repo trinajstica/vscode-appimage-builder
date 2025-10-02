@@ -19,15 +19,25 @@ A lightweight Bash script to automatically build a portable [AppImage](https://a
 
 
 ```bash
-./build-vscode-appimage.sh [--verbose] [--insider]
+./build-vscode-appimage.sh [--verbose] [--insider] [--remove]
 ```
 
 > The resulting AppImage file will be created in your current working directory.
+
+### Remove AppImage and Desktop Entry
+
+To remove the generated AppImage, desktop entry, and icon, run:
+
+```bash
+./build-vscode-appimage.sh --remove [--insider]
+```
+
 
 ### Options
 
 - `--verbose`   Show detailed output during the build process
 - `--insider`   Build the Insiders (preview) version of Visual Studio Code
+- `--remove`    Remove the generated AppImage, desktop entry, and icon (use with --insider to remove Insiders version)
 
 ## How it works
 
