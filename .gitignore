@@ -1,0 +1,11 @@
+# Ignore temporary and build files
+*.AppImage
+*.tar.gz
+*.zip
+*.deb
+*.rpm
+*.log
+node_modules/
+dist/
+build/
+.env
