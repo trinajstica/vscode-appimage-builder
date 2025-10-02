@@ -17,9 +17,12 @@ A lightweight Bash script to automatically build a portable [AppImage](https://a
 
 ## 🚀 Usage
 
+
 ```bash
 ./build-vscode-appimage.sh [--verbose] [--insider]
 ```
+
+> The resulting AppImage file will be created in your current working directory.
 
 ### Options
 
