@@ -4,22 +4,36 @@ A lightweight Bash script to automatically build a portable [AppImage](https://a
 
 ## ✨ Features
 
-- Downloads the latest release of Visual Studio Code from the official site
-- Extracts the `.deb` package contents
-- Assembles a clean AppDir structure
+- Downloads the latest stable or Insiders release of Visual Studio Code from the official site
+- Extracts the `.tar.gz` package contents
+- Assembles a clean AppDir structure for AppImage
+- Automatically downloads `appimagetool` if not available
 - Builds an AppImage using `appimagetool`
-- Works in your current working directory
+- Creates a `.desktop` file and icon for menu integration
+- Installs a desktop entry for the current user
+- Cleans up all temporary files after build
 - Supports `--verbose` mode for detailed output
+- Supports `--insider` to build VS Code Insiders edition
 
 ## 🚀 Usage
 
 ```bash
-./build-vscode-appimage.sh [--verbose]
+./build-vscode-appimage.sh [--verbose] [--insider]
 ```
 
-## About
+### Options
 
-This script helps you create a portable AppImage for Visual Studio Code easily and quickly.
+- `--verbose`   Show detailed output during the build process
+- `--insider`   Build the Insiders (preview) version of Visual Studio Code
+
+## How it works
+
+1. Downloads the latest VS Code (or Insiders) tarball for Linux x64
+2. Extracts the contents and prepares the AppDir structure
+3. Downloads `appimagetool` if not found on the system
+4. Builds the AppImage file in your current directory
+5. Installs a desktop entry and icon for easy launching from your menu
+6. Cleans up all temporary files
 
 ## License
 
